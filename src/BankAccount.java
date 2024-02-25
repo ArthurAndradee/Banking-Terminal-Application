@@ -3,24 +3,7 @@ public class BankAccount {
     private String name;
     private Integer password;
     private Integer money;
-
-    String devName = "Arthur";
-    Integer devPassword = 1620;
-    Integer devMoney = 2000;
-
-    public String devName() {
-        return devName;
-    }
-
-    public Integer devPassword() {
-        return devPassword;
-    }
-
-    public Integer devMoney() {
-        return devMoney;
-    }
-
-
+    
     public String getName() {
         return name;
     }
