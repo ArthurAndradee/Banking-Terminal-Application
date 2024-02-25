@@ -1,19 +1,35 @@
 public class BankAccount {
 
     private String name;
-    private int password;
-    private float money;
+    private Integer password;
+    private Integer money;
 
-    
+    String devName = "Arthur";
+    Integer devPassword = 1620;
+    Integer devMoney = 2000;
+
+    public String devName() {
+        return devName;
+    }
+
+    public Integer devPassword() {
+        return devPassword;
+    }
+
+    public Integer devMoney() {
+        return devMoney;
+    }
+
+
     public String getName() {
         return name;
     }
 
-    public float getPassword() {
+    public Integer getPassword() {
         return password;
     }
 
-    public float getMoney() {
+    public Integer getMoney() {
         return money;
     }
 
@@ -27,7 +43,7 @@ public class BankAccount {
         this.password = password;
     }
 
-    public void setoney(float money) {
+    public void setMoney(Integer money) {
         this.money = money;
     }
 

@@ -16,7 +16,7 @@ public class Atm {
         switch (userInput) {
             case 2:            
                 NUM_ACCOUNTS++;
-                BankAccount u = new BankAccount();
+                BankAccount currentUser = new BankAccount();
 
                 System.out.println("Please state your name");
                 String name = read.next();
@@ -25,15 +25,15 @@ public class Atm {
                 Integer password = read.nextInt();
 
                 System.out.println("Please deposit any amount of money");
-                Float money = read.nextFloat();
+                Integer money = read.nextInt();
 
-                u.setName(name);
-                u.setPassword(password);
-                u.setoney(money);    
-                bankAccounts.add(u);
+                currentUser.setName(name);
+                currentUser.setPassword(password);
+                currentUser.setMoney(money);    
+                bankAccounts.add(currentUser);
                 read.nextLine();
 
-                System.out.println("Current user: \n" + u);
+                System.out.println("Current user: \n" + currentUser);
 
                 userHasAccount = true ;
 
@@ -42,13 +42,61 @@ public class Atm {
                 System.out.println("Please enter your password (Only numbers)");
                 Integer passwordLogin = read.nextInt();
 
-                u.getName();
+                currentUser.getName();
+                currentUser.getPassword();
 
-                if (u.getName().equals(nameLogin) && u.getPassword() == (passwordLogin)) {
+                if (currentUser.getName().equals(nameLogin) && currentUser.getPassword() == (passwordLogin)) {
                     System.out.println("Login successful");
+                } else {
+                    System.out.println("Login unsuccessful");
                 }
 
             case 1:
+                currentUser = new BankAccount();
+
+                System.out.println("Please state your name");
+                nameLogin = read.next();
+                System.out.println("Please enter your password (Only numbers)");
+                passwordLogin = read.nextInt();
+
+                if (nameLogin.equals(currentUser.devName) && passwordLogin.equals(currentUser.devPassword) ) {
+                    System.out.println("Login successful!");
+
+                    System.out.println("What would you like to do?\n1.Withdraw\n2.Deposit\n3.Transfer\n4.Close");
+                    userInput = read.nextInt();
+
+                    switch (userInput) {
+                        case 1:
+                            System.out.println("How much would you like to withdraw?");
+                            userInput = read.nextInt();
+
+                            currentUser.setMoney(currentUser.devMoney - userInput);
+
+                            System.out.println("Current balance:" + currentUser.getMoney());
+                        break;
+
+                        case 2:
+                            System.out.println("How much would you like to deposit?");
+                            userInput = read.nextInt();
+
+                            currentUser.setMoney(currentUser.devMoney + userInput);
+
+                            System.out.println("Current balance:" + currentUser.getMoney());
+                        break;
+
+                        case 3:
+                            System.out.println("How much would you like to withdraw?");
+                            userInput = read.nextInt();
+                            currentUser.setMoney(currentUser.devMoney - userInput);
+                            System.out.println("Current balance:" + currentUser.getMoney());
+                        break;
+
+                        default:
+
+                        break;
+                }} else {
+                    System.out.println("Login unsuccessful");
+                }
                 
             break;
         
