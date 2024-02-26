@@ -15,8 +15,6 @@ public class BankAccount {
     public Integer getMoney() {
         return money;
     }
-
-    //In case user wants to create a new account
     
     public void setName(String name) {
         this.name = name;
@@ -36,4 +34,8 @@ public class BankAccount {
                 "Password:" + password + '\n' +
                 "Savings:" + money;
     }
+}
+
+class devAccount extends BankAccount {
+        
 }
