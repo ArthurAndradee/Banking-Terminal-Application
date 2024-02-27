@@ -42,66 +42,8 @@ public class Atm {
             Integer passwordLogin = read.nextInt();
 
             if (currentUser.getName().equals(nameLogin) && currentUser.getPassword().equals(passwordLogin)) {
-
                 System.out.println("Login successful");
-
-                while (userInput !=5) {
-                    System.out.println("What would you like to do?\n1.Withdraw\n2.Deposit\n3.Transfer\n4.Check balance.\n5.Close");
-
-                    userInput = read.nextInt();
-    
-                    switch (userInput) {
-                        case 1:
-                            System.out.println("\n" + "How much would you like to withdraw?");
-                            userInput = read.nextInt();
-    
-                            if (currentUser.getMoney() >= userInput) {
-                                currentUser.setMoney(currentUser.getMoney() - userInput);
-                                System.out.println("Current balance: " + currentUser.getMoney());
-                            } else {
-                                System.out.println("\n" + "Not enough balance\n");
-                            }
-                            
-                            System.out.println("\n" + "Current balance:" + currentUser.getMoney());
-
-                        break;
-    
-                        case 2:
-                            System.out.println("\n" + "How much would you like to deposit?");
-                            userInput = read.nextInt();
-
-                            currentUser.setMoney(currentUser.getMoney() + userInput);
-                            System.out.println("\n" + "Current balance: " + currentUser.getMoney() + "\n");
-
-                        break;
-    
-                        case 3:
-                            System.out.println("\n" + "How much would you like to transfer?");
-                            userInput = read.nextInt();
-                            if (currentUser.getMoney() >= userInput) {
-                                currentUser.setMoney(currentUser.getMoney() - userInput);
-                                System.out.println("\n" +"And to what account?");
-                            } else {
-                                System.out.println("\n" +"Not enough balance");
-                            }
-                            System.out.println("\n" + "Current balance: " + currentUser.getMoney() + "\n");
-    
-                        break;
-    
-                        case 4:
-                            System.out.println("Current balance: " + currentUser.getMoney() + "\n");
-
-                        break;
-
-                        case 5:
-                            System.out.println("Goodbye!");
-
-                        break;
-    
-                        default:
-                            System.out.println("Invalid character");
-                        break;}
-                }
+                AtmTransactions(0, read, currentUser);
             } else {
                 System.out.println("Login Unsuccessful");
             }
@@ -114,66 +56,69 @@ public class Atm {
 
             if (currentUser.getName().equals(nameLogin) && currentUser.getPassword().equals(passwordLogin)) {
                 System.out.println("Login successful!");
-
-                while (userInput !=5) {
-                    System.out.println("What would you like to do?\n1.Withdraw\n2.Deposit\n3.Transfer\n4.Check balance.\n5.Close");
-                
-                    userInput = read.nextInt();
-                
-                    switch (userInput) {
-                        case 1:
-                            System.out.println("\n" + "How much would you like to withdraw?");
-                            userInput = read.nextInt();
-                
-                            if (currentUser.getMoney() >= userInput) {
-                                currentUser.setMoney(currentUser.getMoney() - userInput);
-                                System.out.println("Current balance: " + currentUser.getMoney());
-                            } else {
-                                System.out.println("\n" + "Not enough balance\n");
-                            }
-                            
-                            System.out.println("\n" + "Current balance:" + currentUser.getMoney());
-                
-                        break;
-                
-                        case 2:
-                            System.out.println("\n" + "How much would you like to deposit?");
-                            userInput = read.nextInt();
-                
-                            currentUser.setMoney(currentUser.getMoney() + userInput);
-                            System.out.println("\n" + "Current balance: " + currentUser.getMoney() + "\n");
-                
-                        break;
-                
-                        case 3:
-                            System.out.println("\n" + "How much would you like to transfer?");
-                            userInput = read.nextInt();
-                            if (currentUser.getMoney() >= userInput) {
-                                currentUser.setMoney(currentUser.getMoney() - userInput);
-                                System.out.println("\n" +"And to what account?");
-                            } else {
-                                System.out.println("\n" +"Not enough balance");
-                            }
-                            System.out.println("\n" + "Current balance: " + currentUser.getMoney() + "\n");
-                
-                        break;
-                
-                        case 4:
-                            System.out.println("Current balance: " + currentUser.getMoney() + "\n");
-                
-                        break;
-                
-                        case 5:
-                            System.out.println("Goodbye!");
-                
-                        break;
-                
-                        default:
-                            System.out.println("Invalid character");
-                        break;}
-                }
+                AtmTransactions(0, read, currentUser);
             }
         }
         read.close();
+    }
+
+    private static void AtmTransactions (int userInput, Scanner read, BankAccount currentUser ) {
+        while (userInput !=5) {
+            System.out.println("What would you like to do?\n1.Withdraw\n2.Deposit\n3.Transfer\n4.Check balance.\n5.Close");
+
+            userInput = read.nextInt();
+
+            switch (userInput) {
+                case 1:
+                    System.out.println("\n" + "How much would you like to withdraw?");
+                    userInput = read.nextInt();
+
+                    if (currentUser.getMoney() >= userInput) {
+                        currentUser.setMoney(currentUser.getMoney() - userInput);
+                        System.out.println("Current balance: " + currentUser.getMoney());
+                    } else {
+                        System.out.println("\n" + "Not enough balance\n");
+                    }
+                    
+                    System.out.println("\n" + "Current balance:" + currentUser.getMoney());
+
+                break;
+
+                case 2:
+                    System.out.println("\n" + "How much would you like to deposit?");
+                    userInput = read.nextInt();
+
+                    currentUser.setMoney(currentUser.getMoney() + userInput);
+                    System.out.println("\n" + "Current balance: " + currentUser.getMoney() + "\n");
+
+                break;
+
+                case 3:
+                    System.out.println("\n" + "How much would you like to transfer?");
+                    userInput = read.nextInt();
+                    if (currentUser.getMoney() >= userInput) {
+                        currentUser.setMoney(currentUser.getMoney() - userInput);
+                        System.out.println("\n" +"And to what account?");
+                    } else {
+                        System.out.println("\n" +"Not enough balance");
+                    }
+                    System.out.println("\n" + "Current balance: " + currentUser.getMoney() + "\n");
+
+                break;
+
+                case 4:
+                    System.out.println("Current balance: " + currentUser.getMoney() + "\n");
+
+                break;
+
+                case 5:
+                    System.out.println("Goodbye!");
+
+                break;
+
+                default:
+                    System.out.println("Invalid character");
+                break;}
+        }
     }
 }
